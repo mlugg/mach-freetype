@@ -1213,7 +1213,7 @@ pub const UnicodeIterator = struct {
 };
 
 pub const Variation = extern struct {
-    tag: u32,
+    tag_raw: u32,
     value: f32,
 
     pub fn fromString(str: []const u8) ?Variation {
@@ -1229,11 +1229,7 @@ pub const Variation = extern struct {
     }
 
     pub fn tag(self: Variation) Tag {
-        return .{ .handle = self.tag };
-    }
-
-    pub fn value(self: Variation) f32 {
-        return self.value;
+        return .{ .handle = self.tag_raw };
     }
 };
 
